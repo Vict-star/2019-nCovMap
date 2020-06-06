@@ -1,7 +1,5 @@
 <view class="top">
-    <image src="../../assets/top.jpg"></image>
-    <view class="title">新型冠状病毒肺炎疫情</view>
-    <view class="desc">实时动态</view>
+    <image src="../../assets/top.png"></image>    
 </view>
 <view class="nav">
     <view wx:for="{{navList}}" data-page="{{item}}" bind:tap="changePage" class="nav-each {{item===actived?'actived':''}}">
@@ -9,34 +7,53 @@
     </view>
 </view>
 
-    
 
+<view  wx:if="{{actived==='最新消息'}}">
 <view class="news">
-    <view wx:for="{{newslist}}" class="news_list" data-nid="{{item.id}}" data-ntitle="{{item.title}}" data-nimg="{{item.Pic}}" data-nsource="{{item.infoSource}}" >
+    <view wx:for="{{newslist}}" class="news_list" data-source="{{item.sourceUrl}}" bindtap="newsDetail">
     
         <view class="news_left">     
         <image  src="/assets/news.jpg"></image>
-            <text class="news_date">{{item.pubDateStr}}</text>
-    
+            <text class="news_date">{{item.pubDateStr}}</text>    
         </view>
-        <view class="news_right">
-            
-            <text class="news_title news_text">{{item.title}}</text>
-            <text class="note_item_text">{{item.summary}}</text>
-           
+        <view class="news_right">            
+            <text class="news_title">{{item.title}}</text>
+            <text class="note_item_text">{{item.summary}}</text>           
             <view class="news_data">                                         
                 <text>来源:{{item.infoSource}}</text>
                 <text>{{item.sourceUrl}}</text>         
             </view>
         </view>
-        </view>
-    
+        </view>    
+</view>
 </view>
 
 
+<view  wx:if="{{actived==='辟谣消息'}}" data-source="{{item.url}}" bindtap="piyaoDetail">
+<view class="news">
+    <view wx:for="{{piyaolist}}" class="news_list" >
+    
+        <view class="news_left">     
+        <image src="{{item.imgsrc}}"></image>                 
+        <view wx:if="{{item.markstyle==='true'}}"> <text class="true">确实如此</text></view>
+        <view wx:if="{{item.markstyle==='doubt'}}"> <text class="doubt">存疑</text></view>
+        <view wx:if="{{item.markstyle==='fake'}}"> <text class="fake">谣言</text></view>
+        </view>
 
-
-
+        <view class="news_right">
+            
+            <text class="news_title">{{item.title}}</text>
+            <text class="note_item_text">{{item.desc}}</text>
+           
+            <view class="news_data">                                         
+                <text>来源:{{item.author}}</text>
+                <text>{{item.url}}</text>         
+            </view>
+        </view>
+        </view>
+    
+</view>
+</view>
 
 
 

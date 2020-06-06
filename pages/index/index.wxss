@@ -84,35 +84,6 @@ view {
     overflow: hidden;
 }
 
-.news_banner {
-    background: #ffffff;
-    background-image: url(../images/line.png);
-    position: fixed;
-    top: -1rpx;
-    z-index: 20;
-    overflow: auto;
-    white-space:nowrap;
-}
-
-.news_banner_text {
-    font-size: 30rpx;
-    padding-left: 3rpx;
-    padding-right: 3rpx;
-    text-align: center;
-    display: inline-block;
-    width: 90rpx;
-}
-
-.news_banner_text text {
-    font-size: 30rpx;
-    font-family: '黑体','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    display: block;
-}
-
-.select {
-    border-bottom: 4rpx solid #3dace9;
-}
-
 .news {
     margin-top: 56rpx;
     width: 100%;
@@ -153,21 +124,6 @@ view {
     float: left;
 }
 
-.news_right text {
-    margin-top: 15rpx;
-    margin-bottom: 15rpx;
-}
-/*处理字符串过长的展示*/
-
-
-.news_subTitle {
-    width: 98%;
-    display: block;
-    font-size: 26rpx;
-    color: #323232;
-    line-height: 30rpx;
-}
-
 .news_data{
     width: 98%;
     font-size: 20rpx;
@@ -175,15 +131,12 @@ view {
     text-align: right;
 }
 
-.news_text {
+.news_title {
     text-overflow:ellipsis;
     display:-webkit-box; 
     -webkit-box-orient:vertical;
     -webkit-line-clamp:2;
     overflow: hidden;
-}
-
-.news_title {
     width: 95%;
     font-size: 26rpx;
     font-weight:bold;
@@ -193,9 +146,45 @@ view {
     font-size: 20rpx;
     font-weight:bold;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 2;/*处理字符串过长的展示*/
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     color: #828282;
+}
+
+.fake{
+    width: 220rpx;
+    font-size: 30rpx;
+    color: #ff0000;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    opacity: 0.6;
+    background-color: #000000;
+    text-align: center;
+}
+
+.true{
+    width: 220rpx;
+    font-size: 30rpx;
+    color: #48ff00;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    opacity: 0.6;
+    background-color: #000000;
+    text-align: center;
+}
+
+.doubt{
+    width: 220rpx;
+    font-size: 30rpx;
+    color: #ffa200;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    opacity: 0.6;
+    background-color: #000000;
+    text-align: center;
 }

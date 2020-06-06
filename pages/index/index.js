@@ -8,11 +8,34 @@ Page({
    */
   data: {
     newslist:[],
-    news:[],
+    piyaolist:[],
     actived: '疫情地图',
     navList: ['疫情地图', '最新消息', '辟谣消息', '疫情趋势'],
     data: ''
   },
+
+  newsDetail:function(e){
+    var dataset = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '../news/news?src='+dataset.source, //
+      success:function() { 
+      },       //成功后的回调；
+      fail:function() { },         //失败后的回调；
+      complete:function() { }      //结束后的回调(成功，失败都会执行)
+ })
+  },
+
+  piyaoDetail:function(e){
+    var dataset = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '../news/news?src='+dataset.url, //
+      success:function() { 
+      },       //成功后的回调；
+      fail:function() { },         //失败后的回调；
+      complete:function() { }      //结束后的回调(成功，失败都会执行)
+ })
+  },
+
   changePage(e) {
     wx.setNavigationBarTitle({
       title: e.currentTarget.dataset.page,
@@ -28,26 +51,42 @@ Page({
     var that = this;
     
     wx.request({
-      url: 'http://api.tianapi.com/txapi/ncov/index?key=aac848e23318a9b5891529fa68984d20',
-      //url: 'http://www.dzyong.top:3005/yiqing/news',
+      url: 'http://api.tianapi.com/txapi/ncov/index?key=aac848e23318a9b5891529fa68984d20',       
       success(res) {
-        
-        res.data.newslist[0].news.forEach(item=>{console.log(item)})
-        
-        
-
+        res.data.newslist[0].news.forEach(item=>{console.log(item)})  
         if (res.statusCode == 200) {
          that.setData({ //newslist赋值           
-              newslist: res.data.newslist[0].news
-          })
-          
+              newslist: res.data.newslist[0].news              
+          })                
         }
-       
+
+
+
+
+
+        wx.request({
+          url: 'http://api.tianapi.com/txapi/rumour/index?key=aac848e23318a9b5891529fa68984d20',           
+          success(res) {          
+              res.data.newslist.forEach(item=>{console.log(item)})  
+              if (res.statusCode == 200) {
+               that.setData({ //newslist赋值           
+                    piyaolist: res.data.newslist
+                })          
+              }                                             
+          },
+          fail: function () {
+            console.log('------------------fail-------------------');
+          }  
+        }
+       )
+
+
+
+
       },
       fail: function () {
         console.log('------------------fail-------------------');
-      }
-      
+      }  
     }
    )
 

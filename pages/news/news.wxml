@@ -1,2 +1,2 @@
-<!--pages/news/news.wxml-->
-<text>pages/news/news.wxml</text>
+
+<web-view src="{{src}}"></web-view>
