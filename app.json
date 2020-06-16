@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/index/index",  
-    "pages/news/news"
-    
+    "pages/news/news",
+    "pages/piyao/piyao",
+    "pages/around/around"
 
   ],
   "window": {
